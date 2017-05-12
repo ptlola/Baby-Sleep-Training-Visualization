@@ -29,12 +29,12 @@ var timeSeriesChart;
 function initializeC3Chart() {
   "use strict";
   timeSeriesChart = c3.generate({
-    bindto: '#chart',
+bindto: '#chart',
     data: {
-      x: 'times',
+    x: 'times',
       xFormat: '%Y-%m-%d %H:%M:%S', // how the date is parsed
       columns: [
-        ['times', '2015-09-17 18:20:34', '2015-09-17 18:25:42', '2015-09-17 18:30:48'],
+        ['times', '2015-09-17 18:20:37', '2015-09-17 18:25:42', '2015-09-17 18:30:48'],
         ['data', '1539', '1546', '1546', '1550']
       ]
     },
