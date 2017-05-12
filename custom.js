@@ -1,6 +1,6 @@
 /* 
  * Copyright 2017 Pascal Lola
- * Updated 04/28/2017 @ 12:25AM
+ * Updated 05/12/2017 @ 1:32AM
  */
 
 //the line of code below will remove certain "irrelevant" javascript warnings
@@ -23,7 +23,6 @@ function loadDataSet() {
     }
   });
 }//end loadDataSet function
-
 
 var timeSeriesChart;
 function initializeC3Chart() {
