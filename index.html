@@ -3,44 +3,141 @@ Code by Pascal Lola
 -->
 <!doctype html>
 <html lang="eng">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Sleep Training Visualizations</title>
-    
-    
-    <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.css">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
-    
-	<link rel="stylesheet" href="custom.css"/>
-    <link href="third-party/c3-0.4.11/c3.css" rel="stylesheet" type="text/css">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>Sleep Training Visualizations</title>
 
 
-  </head>
+   <!--<link rel="stylesheet" href="bootstrap/css/bootstrap.css">-->
+   <link rel="stylesheet" href="third-party/bootstrap/css/bootstrap.css">
 
-  <body>    
-    <div class="container">
-      <div id="chart"></div>
-    </div>
-         
+   <link rel="stylesheet" href="custom.css" />
+   <!--<link href="third-party/c3-0.4.11/c3.css" rel="stylesheet" type="text/css">-->
 
-    <!--Run these scripts last, after the body has loaded--> 
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
-    
-    <!-- Load d3.js and c3.js -->
-    <script src="third-party/d3-3.5.17/d3.min.js"></script>
-    <script src="third-party/c3-0.4.11/c3.js"></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
-    
 
-    <script type="text/javascript" src="custom.js"></script>
+</head>
 
-    
-  </body>
+<body>
+
+
+   <nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: #353432;">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+      <h1 class="navbar-brand mb-0" style="color: #FFFFFF;">BABY SLEEP TRAINING DATA VISUALIZATION</h1>
+      <div class="collapse navbar-collapse" id="navbarText">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+               <a class="nav-link" href="#">Visualization <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="#" data-toggle="modal" data-target=".bd-example-modal-lg">About</a>
+            </li>
+
+         </ul>
+
+      </div>
+   </nav>
+
+
+   <div style="height:20px"></div>
+   <div class="container-fluid">
+   <form class="form-inline">
+      <label class="sr-only" for="sleepLocationOption">Sleep Location</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+       <div class="input-group-addon">Sleep Location</div>
+       <select id="sleepLocationOption" class="custom-select" style="border-top-left-radius: 0; border-bottom-left-radius: 0;">
+            <option selected>All Location</option>
+            <option value="1">Crib</option>
+            <option value="2">Bed</option>
+            <option value="3">Car</option>
+            <option value="4">Arm</option>
+         </select>
+      </div>
+      
+      <label class="sr-only" for="dayOfWeek">Day of Week</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+       <div class="input-group-addon">Day of Week</div>
+       <select id="dayofWeek" class="custom-select" style="border-top-left-radius: 0; border-bottom-left-radius: 0;" disabled>
+            <option selected>All Days</option>
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+            <option value="7">Sunday</option>
+         </select>
+      </div>
+      
+   
+      <label class="sr-only" for="yAxisLabelsOptions">Left Labels</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+       <div class="input-group-addon">Left Labels</div>
+       <select id="yAxisLabelsOptions" class="custom-select" style="border-top-left-radius: 0; border-bottom-left-radius: 0;" disabled>
+            <option selected>Dates</option>
+            <option value="1">Day of Week</option>
+            <option value="2">Months</option>
+            <option value="3">Sleep Hour</option>
+            <option value="4">Wake Hour</option>
+         </select>
+      </div>
+      
+      <label class="sr-only" for="xAxisLabelsOptions">Top Labels</label>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+       <div class="input-group-addon">Top Labels</div>
+       <select id="xAxisLabelsOptions" class="custom-select" style="border-top-left-radius: 0; border-bottom-left-radius: 0;" disabled>
+            <option selected>Hours</option>
+            <option value="1">Day of Week</option>
+            <option value="2">Months</option>
+            <option value="3">Sleep Hour</option>
+            <option value="4">Wake Hour</option>
+         </select>
+      </div>
+      
+        <button type="submit" class="btn btn-primary">Update</button>
+
+      </form>
+   </div>
+
+   <div class="container-fluid" id="heatmap-container">
+   </div>
+
+   <div class="container-fluid" id="line-container">
+   </div>
+
+
+
+
+
+
+
+   <!--Run these scripts last, after the body has loaded-->
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script>
+
+   <!-- Load d3.js and c3.js -->
+   <!--<script src="third-party/d3-3.5.17/d3.min.js"></script>
+    <script src="third-party/c3-0.4.11/c3.js"></script>-->
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+
+   <!--Highcharts Heatmap Javascript Libraries -->
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+   <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+   <!--<script src="https://code.highcharts.com/modules/exporting.js"></script> -->
+
+   <script src="third-party/moment.js/moment.js"></script>
+
+
+
+   <script type="text/javascript" src="custom.js"></script>
+
+
+</body>
+
 </html>
-
