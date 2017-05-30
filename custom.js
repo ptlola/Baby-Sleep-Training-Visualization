@@ -116,8 +116,8 @@ function initializeHeatmap() {
             layout: 'vertical',
             margin: 0,
             verticalAlign: 'top',
-            y: 75,
-            symbolHeight: 320
+            y: 30,
+            symbolHeight: 350
         },
 
         tooltip: {
