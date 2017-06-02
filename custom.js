@@ -263,6 +263,18 @@ function getDensity(date, type) {
 
 window.onload = function () {
    "use strict";
+
+   $('input[name="dateRangePicker"]').daterangepicker({
+         locale: {
+            format: 'DD-MM-YYYY'
+         },
+         startDate: '04-17-2017',
+         endDate: '05-31-2017'
+      },
+      function (start, end, label) {
+         alert("A new date range was chosen: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+      });
+
    //initializeC3Chart();
    //initializeLineChart();
    //initializeHeatmap();
